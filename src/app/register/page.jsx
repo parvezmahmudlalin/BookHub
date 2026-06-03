@@ -18,7 +18,6 @@ import { authClient } from "../../lib/auth-client";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
-
   const route = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -27,23 +26,28 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const {data,error} = await authClient.signUp.email({
+    const { data, error } = await authClient.signUp.email({
       email,
       password,
       name,
       photo: photoUrl,
-      callbackURL: "/"
+      callbackURL: "/",
     });
 
     console.log("Register response:", { data, error });
 
-    if(!error){
+    if (!error) {
       route.push("/login");
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10" >
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10">
       <Card className="w-full max-w-md p-8 shadow-xl border">
         {/* Header */}
         <div className="text-center mb-6">
@@ -151,6 +155,7 @@ const Register = () => {
     justify-center
     gap-3
   "
+          onClick={handleGoogleSignIn}
         >
           <FcGoogle size={22} />
           <span>Continue with Google</span>

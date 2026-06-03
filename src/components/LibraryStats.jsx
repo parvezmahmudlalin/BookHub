@@ -1,5 +1,5 @@
 const LibraryStats = async () => {
-  const res = await fetch("https://book-hub-ashy-one.vercel.app/data.json", {
+  const res = await fetch("http://localhost:3000/data.json", {
     cache: "no-store",
   });
 

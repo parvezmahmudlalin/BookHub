@@ -2,28 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BookCard = ({ book }) => {
-  const {
-    id,
-    title,
-    author,
-    category,
-    available_quantity,
-    image_url,
-  } = book;
+  const { id, title, author, category, available_quantity, image_url } = book;
 
   return (
     <div className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-      
-      {/* Image */}
+     
       <div className="relative h-72 overflow-hidden">
         <Image
           src={image_url}
           alt={title}
           fill
-          className="object-cover group-hover:scale-110 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          className="object-cover"
         />
 
-        {/* Category Badge */}
+        
         <div className="absolute top-3 left-3">
           <span className="bg-linear-to-r from-blue-500 to-indigo-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">
             {category}
@@ -31,7 +24,7 @@ const BookCard = ({ book }) => {
         </div>
       </div>
 
-      {/* Content */}
+    
       <div className="p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white line-clamp-1">
           {title}
@@ -46,9 +39,7 @@ const BookCard = ({ book }) => {
             <p className="text-xs text-gray-500">Available</p>
             <p
               className={`font-semibold ${
-                available_quantity > 5
-                  ? "text-green-600"
-                  : "text-red-500"
+                available_quantity > 5 ? "text-green-600" : "text-red-500"
               }`}
             >
               {available_quantity} Copies
@@ -64,9 +55,7 @@ const BookCard = ({ book }) => {
                   : "bg-red-100 text-red-700"
               }`}
             >
-              {available_quantity > 0
-                ? "In Stock"
-                : "Out of Stock"}
+              {available_quantity > 0 ? "In Stock" : "Out of Stock"}
             </span>
           </div>
         </div>

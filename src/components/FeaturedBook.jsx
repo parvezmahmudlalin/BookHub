@@ -8,7 +8,7 @@ const FeaturedBook = async () => {
     return (
         <div>
            <h2 className="text-2xl font-bold my-5">Featured Book</h2> 
-           <div>
+           <div className = "grid grid-cols-4 gap-4">
             {
                 featuredBook.map((book) => <BookCard key= {book.id} book={book} />)
 

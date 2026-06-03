@@ -25,7 +25,7 @@ const BookCard = ({ book }) => {
 
         {/* Category Badge */}
         <div className="absolute top-3 left-3">
-          <span className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">
+          <span className="bg-linear-to-r from-blue-500 to-indigo-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">
             {category}
           </span>
         </div>
@@ -72,7 +72,7 @@ const BookCard = ({ book }) => {
         </div>
 
         <Link href={`/books/${id}`}>
-          <button className="w-full mt-5 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 shadow-md hover:shadow-xl">
+          <button className="w-full mt-5 py-3 rounded-xl font-semibold bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 shadow-md hover:shadow-xl">
             View Details →
           </button>
         </Link>

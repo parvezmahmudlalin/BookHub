@@ -1,5 +1,5 @@
 const LibraryStats = async () => {
-  const res = await fetch("http://localhost:3000/data.json", {
+  const res = await fetch("https://book-hub-ashy-one.vercel.app/data.json", {
     cache: "no-store",
   });
 
@@ -20,15 +20,15 @@ const LibraryStats = async () => {
 
   return (
     <section className="my-20">
-      <div className="rounded-3xl border border-blue-100 dark:border-slate-800 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 p-8 md:p-12 shadow-lg">
+      <div className="rounded-3xl border border-blue-100 dark:border-slate-800 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 p-8 md:p-12 shadow-lg">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div>
-            <span className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wider">
+            <span className="text-sm font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wider">
               BookHub Community
             </span>
 
-            <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4 bg-gradient-to-r from-slate-900 via-blue-700 to-purple-700 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4 bg-linear-to-r from-slate-900 via-blue-700 to-purple-700 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
               A Growing Home for Readers and Lifelong Learners
             </h2>
 

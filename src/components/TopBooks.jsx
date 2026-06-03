@@ -1,5 +1,7 @@
+import BookCard from "./BookCard";
+
 const TopBooks = async () => {
-  const res = await fetch("http://localhost:3000/data.json", {
+  const res = await fetch("https://book-hub-ashy-one.vercel.app/data.json", {
     cache: "no-store",
   });
 
@@ -20,6 +22,7 @@ const TopBooks = async () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
         {topBooks.map((book) => (
+          
           <BookCard key={book.id} book={book} />
         ))}
       </div>

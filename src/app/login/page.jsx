@@ -13,8 +13,23 @@ import {
   FieldError,
 } from "@heroui/react";
 import { FcGoogle } from "react-icons/fc";
+import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+   const {data,error} = await authClient.signIn.email({
+    email: email,
+    password: password,
+    callbackURL: "/"
+   });
+   console.log({data,error});
+  }
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10">
       <Card className="w-full max-w-md p-8 shadow-xl border">
@@ -27,7 +42,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <Form className="w-full flex flex-col gap-4">
+        <Form className="w-full flex flex-col gap-4" onSubmit = {onSubmit}>
           {/* Email */}
           <TextField
             isRequired

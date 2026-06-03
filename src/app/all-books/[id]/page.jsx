@@ -8,7 +8,7 @@ const BookDetailsPage = async ({ params }) => {
   const book = books.find((b) => b.id === parseInt(id));
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto  px-4 py-10 ">
       <div className="grid md:grid-cols-2 gap-10 items-start bg-white rounded-2xl shadow-lg p-6">
         <div className="relative h-[500px] w-full overflow-hidden rounded-xl">
           <Image
@@ -22,7 +22,7 @@ const BookDetailsPage = async ({ params }) => {
 
         <div className="space-y-5">
           <div>
-            <span className="text-sm bg-gray-100 px-3 py-1 rounded-full">
+            <span className="bg-linear-to-r from-blue-500 to-indigo-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">
               {book.category}
             </span>
           </div>

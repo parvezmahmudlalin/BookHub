@@ -45,7 +45,7 @@ const Navbar = () => {
         {/* Auth Buttons */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full md:w-auto">
           <Link href="/login" className="w-full sm:w-auto">
-            <Button color="primary" className="w-full">
+            <Button color="primary" className=" w-full">
               Login
             </Button>
           </Link>

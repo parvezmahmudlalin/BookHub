@@ -1,13 +1,15 @@
 import Banner from "@/components/Banner";
+import FeaturedBook from "@/components/FeaturedBook";
 import MarqueeSection from "@/components/MarqueeSection";
 import Marquee from "react-fast-marquee";
 
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div>
     <Banner />
-    <Marquee><MarqueeSection /> </Marquee>
+    <Marquee><MarqueeSection /></Marquee>
+    <FeaturedBook></FeaturedBook>
     
     </div>
   );

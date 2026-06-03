@@ -60,7 +60,7 @@ const BookCard = ({ book }) => {
           </div>
         </div>
 
-        <Link href={`/books/${id}`}>
+        <Link href={`/all-books/${id}`}>
           <button className="w-full mt-5 py-3 rounded-xl font-semibold bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 shadow-md hover:shadow-xl">
             View Details →
           </button>

@@ -4,7 +4,7 @@
     "title": "The Silent Forest",
     "author": "Emily Carter",
     "description": "A thrilling story about secrets hidden deep within an ancient forest.",
-    "category": "Story",
+    "category": "Science",
     "available_quantity": 8,
     "image_url": "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg"
   },
@@ -13,7 +13,7 @@
     "title": "Beyond the Horizon",
     "author": "James Walker",
     "description": "An inspiring journey of self-discovery and adventure.",
-    "category": "Story",
+    "category": "Tech",
     "available_quantity": 5,
     "image_url": "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
   },
@@ -31,7 +31,7 @@
     "title": "Mastering JavaScript",
     "author": "David Miller",
     "description": "A complete guide to modern JavaScript development.",
-    "category": "Tech",
+    "category": "Story",
     "available_quantity": 12,
     "image_url": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg"
   },
@@ -40,7 +40,7 @@
     "title": "Next.js in Action",
     "author": "Sarah Johnson",
     "description": "Learn how to build scalable web applications using Next.js.",
-    "category": "Tech",
+    "category": "Science",
     "available_quantity": 7,
     "image_url": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg"
   },
@@ -58,7 +58,7 @@
     "title": "The Wonders of Space",
     "author": "Olivia White",
     "description": "Explore galaxies, planets, and the mysteries of the universe.",
-    "category": "Science",
+    "category": "Tech",
     "available_quantity": 6,
     "image_url": "https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg"
   },
@@ -67,7 +67,7 @@
     "title": "Physics Made Simple",
     "author": "Daniel Clark",
     "description": "A beginner-friendly introduction to the laws of physics.",
-    "category": "Science",
+    "category": "Story",
     "available_quantity": 11,
     "image_url": "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg"
   },
@@ -94,7 +94,7 @@
     "title": "River of Dreams",
     "author": "Charlotte Adams",
     "description": "A heartwarming story of hope, friendship, and perseverance.",
-    "category": "Story",
+    "category": "Science",
     "available_quantity": 7,
     "image_url": "https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg"
   },
@@ -103,7 +103,7 @@
     "title": "Secrets of Nature",
     "author": "Benjamin Harris",
     "description": "Discover fascinating facts about the natural world.",
-    "category": "Science",
+    "category": "Story",
     "available_quantity": 13,
     "image_url": "https://images.pexels.com/photos/34950/pexels-photo.jpg"
   }

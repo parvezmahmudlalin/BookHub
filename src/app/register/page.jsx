@@ -15,8 +15,11 @@ import {
 
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "../../lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+
+  const route = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -33,6 +36,10 @@ const Register = () => {
     });
 
     console.log("Register response:", { data, error });
+
+    if(!error){
+      route.push("/login");
+    }
   };
 
   return (

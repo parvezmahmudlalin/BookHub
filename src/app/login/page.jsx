@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -16,20 +15,25 @@ import { FcGoogle } from "react-icons/fc";
 import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-   const {data,error} = await authClient.signIn.email({
-    email: email,
-    password: password,
-    callbackURL: "/"
-   });
-   console.log({data,error});
-  }
+    const { data, error } = await authClient.signIn.email({
+      email: email,
+      password: password,
+      callbackURL: "/",
+    });
+    cosnole.log("Login response:", { data, error });
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10">
       <Card className="w-full max-w-md p-8 shadow-xl border">
@@ -42,35 +46,23 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <Form className="w-full flex flex-col gap-4" onSubmit = {onSubmit}>
+        <Form className="w-full flex flex-col gap-4" onSubmit={onSubmit}>
           {/* Email */}
-          <TextField
-            isRequired
-            name="email"
-            type="email"
-          >
+          <TextField isRequired name="email" type="email">
             <Label>Email</Label>
             <Input placeholder="john@example.com" />
             <FieldError />
           </TextField>
 
           {/* Password */}
-          <TextField
-            isRequired
-            name="password"
-            type="password"
-          >
+          <TextField isRequired name="password" type="password">
             <Label>Password</Label>
             <Input placeholder="Enter your password" />
             <FieldError />
           </TextField>
 
           {/* Login Button */}
-          <Button
-            type="submit"
-            color="primary"
-            className="w-full mt-2"
-          >
+          <Button type="submit" color="primary" className="w-full mt-2">
             Login
           </Button>
         </Form>
@@ -110,6 +102,7 @@ const LoginPage = () => {
             justify-center
             gap-3
           "
+          onClick={handleGoogleSignIn}
         >
           <FcGoogle size={22} />
           Continue with Google
@@ -131,4 +124,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

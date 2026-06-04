@@ -26,7 +26,7 @@ const LoginPage = () => {
       password: password,
       callbackURL: "/",
     });
-    cosnole.log("Login response:", { data, error });
+   
   };
 
   const handleGoogleSignIn = async () => {

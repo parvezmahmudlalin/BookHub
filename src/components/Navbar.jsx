@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <header className="bg-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between py-4 gap-4">
           
@@ -101,7 +101,13 @@ const Navbar = () => {
               </Link>
 
             </div>
-          ) : ( <div className="flex gap-3 items-center"> <Avatar size="sm"> <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" /> <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback> </Avatar> <span className="font-medium"> {user?.name} </span> <Button onClick={handleSignOut} size="sm" color="danger" > SignOut </Button> </div> )}
+          ) : ( <div className="flex gap-3 items-center">
+             <Avatar size="sm"> 
+              <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
+               <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+           <span className="font-medium"> {user?.name} </span> 
+           <Button onClick={handleSignOut} size="sm" color="danger" > SignOut </Button> </div> )}
         </div>
       </nav>
     </header>

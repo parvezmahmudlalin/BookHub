@@ -37,14 +37,11 @@ const Register = () => {
 
     console.log("Register response:", { data, error });
 
-    if(error) {
-      toast.error(error.message);
-      return
+    if (error) {
+      toast.error(error.message || "Registration failed!");
+      return;
     }
-    if (!error) {
-      toast.success("Registered Successful !")
-      route.push("/login");
-    }
+    toast.success("Registration Successful 🎉");
   };
 
   const handleGoogleSignIn = async () => {

@@ -13,21 +13,32 @@ import {
 } from "@heroui/react";
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
-  const onSubmit = async (e) => {
-    e.preventDefault();
+const onSubmit = async (e) => {
+  e.preventDefault();
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  const loadingToast = toast.loading("Logging in...");
+  const { data, error } = await authClient.signIn.email({
+    email,
+    password,
+    callbackURL: "/",
+  });
 
-    const { data, error } = await authClient.signIn.email({
-      email: email,
-      password: password,
-      callbackURL: "/",
-    });
-   
-  };
+ console.log({data,error})
+  toast.dismiss(loadingToast);
+
+  if (error) {
+    toast.error(error.message || "Login failed!");
+    return;
+  }
+
+  toast.success("Login Successful!");
+};
+ 
 
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({

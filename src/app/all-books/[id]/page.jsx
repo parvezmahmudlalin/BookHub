@@ -6,17 +6,16 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 
 const BookDetailsPage = ({ params }) => {
-  const { id } = use(params); // ✅ use() দিয়ে unwrap করতে হবে
+  const { id } = use(params);
 
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [borrowed, setBorrowed] = useState(false); // ✅ borrow হয়েছে কিনা track করতে
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await fetch(
-          "https://book-hub-ashy-one.vercel.app/data.json"
-        );
+        const res = await fetch("https://book-hub-ashy-one.vercel.app/data.json");
         const books = await res.json();
         const found = books.find((b) => b.id === parseInt(id));
         setBook(found);
@@ -28,38 +27,28 @@ const BookDetailsPage = ({ params }) => {
     fetchBook();
   }, [id]);
 
-  const handleBorrow = async () => {
+  const handleBorrow = () => {
     if (book.available_quantity === 0) {
       toast.error("This book is unavailable!");
       return;
     }
 
-    try {
-      setLoading(true);
-
-      const res = await fetch(
-        `https://book-hub-ashy-one.vercel.app/api/books/${book.id}/borrow`,
-        {
-          method: "PATCH",
-        }
-      );
-
-      const data = await res.json();
-
-      if (data.success) {
-        toast.success("Book borrowed successfully!");
-        setBook((prev) => ({
-          ...prev,
-          available_quantity: prev.available_quantity - 1,
-        }));
-      } else {
-        toast.error(data.message || "Borrow failed!");
-      }
-    } catch (error) {
-      toast.error("Something went wrong!");
-    } finally {
-      setLoading(false);
+    if (borrowed) {
+      toast.error("You already borrowed this book!");
+      return;
     }
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setBook((prev) => ({
+        ...prev,
+        available_quantity: prev.available_quantity - 1,
+      }));
+      setBorrowed(true);
+      toast.success("Book borrowed successfully!");
+      setLoading(false);
+    }, 500); 
   };
 
   if (!book) {
@@ -111,10 +100,12 @@ const BookDetailsPage = ({ params }) => {
             size="lg"
             className="w-full md:w-auto px-10"
             onPress={handleBorrow}
-            isDisabled={book.available_quantity === 0 || loading}
+            isDisabled={book.available_quantity === 0 || loading || borrowed}
           >
             {book.available_quantity === 0
               ? "Unavailable"
+              : borrowed
+              ? "Already Borrowed ✓"
               : loading
               ? "Processing..."
               : "Borrow This Book"}

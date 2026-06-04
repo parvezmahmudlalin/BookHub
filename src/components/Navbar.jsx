@@ -101,11 +101,7 @@ const Navbar = () => {
               </Link>
 
             </div>
-          ) : ( <div className="flex items-center gap-3 bg-slate-100 px-3 py-2 rounded-full">
-             <Avatar src={user?.image} name={user?.name} size="sm" /> 
-             <span className="font-medium hidden sm:block"> {user?.name} </span>
-              <Button size="sm" color="primary" onClick={handleSignOut} className="rounded-full" > Sign Out </Button> 
-              </div> )}
+          ) : ( <div className="flex gap-3 items-center"> <Avatar size="sm"> <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" /> <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback> </Avatar> <span className="font-medium"> {user?.name} </span> <Button onClick={handleSignOut} size="sm" color="danger" > SignOut </Button> </div> )}
         </div>
       </nav>
     </header>

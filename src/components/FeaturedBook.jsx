@@ -2,7 +2,7 @@ import React from 'react';
 import BookCard from './BookCard';
 
 const FeaturedBook = async () => {
-   const res = await fetch('http://localhost:3000/data.json');
+   const res = await fetch('https://book-hub-ashy-one.vercel.app/data.json');
     const data = await res.json();
     const featuredBook = data.slice(0,4); 
     return (

@@ -5,7 +5,7 @@ import React from 'react';
 const AllBooks = async ({searchParams}) => {
     const {category, search} =  searchParams;
     
-    const res = await fetch('http://localhost:3000/data.json');
+    const res = await fetch('https://book-hub-ashy-one.vercel.app/data.json');
     const books = await res.json();
 
     const filteredBooks = books.filter(book => {

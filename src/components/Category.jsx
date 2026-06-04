@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 const Category = async () => {
-  const res = await fetch("http://localhost:3000/category.json");
+  const res = await fetch("https://book-hub-ashy-one.vercel.app/category.json");
   const categories = await res.json();
 
   return (

@@ -16,6 +16,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "../../lib/auth-client";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const route = useRouter();
@@ -36,7 +37,12 @@ const Register = () => {
 
     console.log("Register response:", { data, error });
 
+    if(error) {
+      toast.error(error.message);
+      return
+    }
     if (!error) {
+      toast.success("Registered Successful !")
       route.push("/login");
     }
   };

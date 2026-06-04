@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, use } from "react";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 
 const BookDetailsPage = ({ params }) => {
-  const { id } = params;
+  const { id } = use(params); // ✅ use() দিয়ে unwrap করতে হবে
 
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(false);
 
- 
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -49,7 +48,6 @@ const BookDetailsPage = ({ params }) => {
 
       if (data.success) {
         toast.success("Book borrowed successfully!");
-
         setBook((prev) => ({
           ...prev,
           available_quantity: prev.available_quantity - 1,
@@ -88,7 +86,6 @@ const BookDetailsPage = ({ params }) => {
 
         {/* Details */}
         <div className="space-y-5">
-
           <span className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full">
             {book.category}
           </span>
@@ -99,9 +96,7 @@ const BookDetailsPage = ({ params }) => {
 
           <div className="border-t border-b py-5">
             <h3 className="font-semibold text-lg mb-2">Description</h3>
-            <p className="text-gray-700 leading-7">
-              {book.description}
-            </p>
+            <p className="text-gray-700 leading-7">{book.description}</p>
           </div>
 
           <div>
@@ -111,7 +106,6 @@ const BookDetailsPage = ({ params }) => {
             </p>
           </div>
 
-          {/* Borrow Button */}
           <Button
             color="primary"
             size="lg"

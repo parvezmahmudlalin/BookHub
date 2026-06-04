@@ -11,7 +11,7 @@ const BookDetailsPage = ({ params }) => {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // fetch single book
+ 
   useEffect(() => {
     const fetchBook = async () => {
       try {

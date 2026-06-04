@@ -1,8 +1,18 @@
+"use client";
 import Link from "next/link";
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import NavLink from "./NavLink";
+import { authClient } from "@/lib/auth-client";
 const Navbar = () => {
+
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
+
+  
+  const handleSignOut = async () => {
+   await authClient.signOut();
+  }
   return (
     <div className="border-b px-4">
       <nav className="flex flex-col md:flex-row justify-between items-center py-3 max-w-7xl mx-auto w-full gap-4 md:gap-0">
@@ -44,17 +54,45 @@ const Navbar = () => {
 
         {/* Auth Buttons */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full md:w-auto">
-          <Link href="/login" className="w-full sm:w-auto">
-            <Button color="primary" className=" w-full">
-              Login
-            </Button>
-          </Link>
+           {!user ? (
+            <>
+              <Link href="/login" className="w-full sm:w-auto">
+                <Button color="primary" className="w-full">
+                  Login
+                </Button>
+              </Link>
 
-          <Link href="/register" className="w-full sm:w-auto">
-            <Button color="secondary" className="w-full">
-              Register
-            </Button>
-          </Link>
+              <Link href="/register" className="w-full sm:w-auto">
+                <Button color="secondary" className="w-full">
+                  Register
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <div className="flex gap-3 items-center">
+              <Avatar size="sm">
+                <Avatar.Image
+                  alt="John Doe"
+                  src={user?.image}
+                  referrerPolicy="no-referrer"
+                />
+                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+
+              <span className="font-medium">
+                {user?.name}
+              </span>
+
+              <Button
+                onClick={handleSignOut}
+                size="sm"
+                color="danger"
+              >
+                SignOut
+              </Button>
+            </div>
+          )}
+
         </div>
 
       </nav>
